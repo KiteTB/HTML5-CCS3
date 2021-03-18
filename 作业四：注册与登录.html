@@ -4,20 +4,20 @@
 <script>
 var DB;
 	
-//�������ݿⷽ��
+//创建数据库方法
 function initDatabase() {
     if (!window.openDatabase) {
-        alert('�������֧��Web SQL���ݿ�.');
+        alert('浏览器不支持Web SQL数据库.');
     } else {
-        var dbName = 'mydb'; //�������ݿ�����
-        var dbVersion = '1.0'; //�������ݿ�汾
-        var dbDec = 'DEMO Database'; //�������ݿ�˵����Ϣ
-        var dbSize = 100000; //  �������ݿ��С
-        DB = openDatabase(dbName, dbVersion, dbDec, dbSize); //�������ݿ⣬������showResult����
+        var dbName = 'mydb'; //定义数据库名称
+        var dbVersion = '1.0'; //定义数据库版本
+        var dbDec = 'DEMO Database'; //定义数据库说明信息
+        var dbSize = 100000; //  定义数据库大小
+        DB = openDatabase(dbName, dbVersion, dbDec, dbSize); //创建数据库，并调用showResult方法
     }
 }
 	
-//�������ݱ�
+//创建数据表
 function createTable()
 {
 	DB.transaction(function(tx){
@@ -25,7 +25,7 @@ function createTable()
 	});
 }
 	
-//ע�᷽��
+//注册方法
 function register()
 {
 	
@@ -44,21 +44,21 @@ function register()
 					'select * from USERINFO where USERNAME=?',
 					[username],
 					function(tx,rs){
-						if (rs.rows.length>0) //�û����Ѿ�����
+						if (rs.rows.length>0) //用户名已经存在
 						{
-							alert("���û����Ѿ����ڣ���ʹ�������û���ע�ᡣ");
+							alert("该用户名已经存在，请使用其他用户名注册。");
 						}
 						else
 						{
 							DB.transaction(function(tx){
-								tx.executeSql( //�����û�ע����Ϣ�������ݿ�
+								tx.executeSql( //将新用户注册信息插入数据库
 									'insert into USERINFO(USERNAME,PASSWORD,EMAIL) values(?,?,?)',
 									[username,password,email],
 									function(tx,rs){
-										alert('ע��ɹ�');
+										alert('注册成功');
 									},
 									function(tx,error){
-										alert('ע��ʧ��');
+										alert('注册失败');
 									}
 								);
 							});
@@ -69,10 +69,10 @@ function register()
 	}
 	else
 	{
-		alert('ע��ʧ�ܣ��밴Ҫ��������Ϣ');
+		alert('注册失败，请按要求填入信息');
 	}
 }
-//��¼����
+//登录方法
 function login()
 {
 	initDatabase();
@@ -83,17 +83,17 @@ function login()
 			'select * from USERINFO where USERNAME=? and PASSWORD=?',
 			[username,password],
 			function(tx,rs){
-				if (rs.rows.length==0) //δ��ѯ��ָ���û�����������û���Ϣ
+				if (rs.rows.length==0) //未查询到指定用户名与密码的用户信息
 				{
-					alert("��¼ʧ��");
+					alert("登录失败");
 				}
 				else
 				{
 					var msg ='';
 					for(var i=0;i<rs.rows.length;i++)
 					{
-						msg += '���ã�'+rs.rows.item(i).USERNAME 
-							+'\n����email�� : ' +rs.rows.item(i).EMAIL;
+						msg += '您好，'+rs.rows.item(i).USERNAME 
+							+'\n您的email是 : ' +rs.rows.item(i).EMAIL;
 					}
 					alert(msg);
 				}
@@ -107,30 +107,30 @@ function login()
 <div>
 	<div style="float:left;border-style:outset;width:300px;height:300px">
 		<center>
-		<h2>ע�����û�</h2>
+		<h2>注册新用户</h2>
 		
 		<table>
 			<tr>
-				<td valign="top">�û���</td>
+				<td valign="top">用户名</td>
 				<td><input type="text" id="username" required pattern="^[a-zA-Z0-9]{7,}$"/>
 					<br>
-					<span style="color:red;font-size:12px">Ӣ�ĺ�������ϣ��ҳ��ȴ���6λ</span>			
+					<span style="color:red;font-size:12px">英文和数字组合，且长度大于6位</span>			
 				</td>
 			</tr>
 			<tr>
-				<td valign="top">ѧ��</td>
+				<td valign="top">学号</td>
 				<td><input type="text" id="password" pattern="^[0-9]+$"/>
 					<br>
-					<span style="color:red;font-size:12px">ֻ������������</span>
+					<span style="color:red;font-size:12px">只允许输入数字</span>
 				</td>
 			</tr>
 			<tr>
-				<td>��������</td>
+				<td>电子邮箱</td>
 				<td><input type="email" id="email"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="ע�����û�" onclick="register()"/>
+					<input type="button" value="注册新用户" onclick="register()"/>
 				</td>
 			</tr>
 		</table>
@@ -139,20 +139,20 @@ function login()
 	</div>
 	<div style="float:left;border-style:outset;margin-left:30px;width:300px;height:300px">
 		<center>
-		<h2>�û���¼</h2>
+		<h2>用户登录</h2>
 		<form id="logForm">
 		<table>
 			<tr>
-				<td>�û���</td>
+				<td>用户名</td>
 				<td><input type="text" id="login_username"/></td>
 			</tr>
 			<tr>
-				<td>ѧ��</td>
+				<td>学号</td>
 				<td><input type="password" id="login_password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="�û���¼" onclick="login()"/>
+					<input type="button" value="用户登录" onclick="login()"/>
 				</td>
 			</tr>
 		</table>
