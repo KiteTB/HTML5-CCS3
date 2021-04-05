@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* 页眉/Blog 标题 */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* 设置上导航栏的样式 */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* 设置 topnav 链接的样式 */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* 改变鼠标悬停时的颜色 */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* 创建两个不相等的彼此并排的浮动列 */
+/* 左列 */
+.leftcolumn {   
+  float: left;
+  width: 62%;
+}
+
+/* 右列 */
+.rightcolumn {
+  float: left;
+  width: 38%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* 伪图像 */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* 为文章添加卡片效果 */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* 清除列之后的浮动 */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* 页脚 */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* 响应式布局 - 当屏幕的宽度小于 800 像素时，使两列堆叠而不是并排 */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* 响应式布局 - 当屏幕的宽度小于 400 像素时，使导航链接堆叠而不是并排 */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+	
+#example1 {
+  background: url(1.jpg) left top repeat;
+  padding: 15px;
+}
+
+.newspaper {
+  column-count: 3;
+  column-gap: 50px;
+  column-rule: 1px solid black;
+}
+
+h2 {
+  column-span: all;
+}
+
+img {
+  opacity: 0.5;
+}
+
+img:hover {
+  opacity: 1.0;
+}
+
+.demo {
+  width: 234px;
+  height: 133px;
+  background: url(chrome.jpg) 0 0;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+#div1 {animation-timing-function: linear;}
+
+@keyframes example {
+  0%   {left:0px; top:0px;}
+  50%  {left:270px; top:0px;}
+  100% {left:0px; top:0px;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>My Website</h1>
+  <p>welcome to my website.</p>
+</div>
+
+<div class="topnav">
+  <a href="#">Home</a>
+  <a href="#">News</a>
+  <a href="#">Contact</a>
+  <a href="#" style="float:right">About</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+		<div id="example1" class="newspaper">
+		  <h2>第一回 宴桃园豪杰三结义 斩黄巾英雄首立功</h2>
+		  话说天下大势，分久必合，合久必分：周末七国分争，并入于秦；及秦灭之后，楚、汉分争，又并入于汉；汉朝自高祖斩白蛇而起义，一统天下，后来光武中兴，传至献帝，遂分为三国。推其致乱之由，殆始于桓、灵二帝。桓帝禁锢善类，崇信宦官。及桓帝崩，灵帝即位，大将军窦武、太傅陈蕃，共相辅佐；时有宦官曹节等弄权，窦武、陈蕃谋诛之，机事不密，反为所害，中涓自此愈横。建宁二年四月望日，帝御温德殿。方升座，殿角狂风骤起，只见一条大青蛇，从梁上飞将下来，蟠于椅上。帝惊倒，左右急救入宫，百官俱奔避。须臾，蛇不见了。忽然大雷大雨，加以冰雹，落到半夜方止，坏却房屋无数。建宁四年二月，洛阳地震；又海水泛溢，沿海居民，尽被大浪卷入海中。光和元年，雌鸡化雄。六月朔，黑气十馀丈，飞入温德殿中。秋七月，有虹现于玉堂，五原山岸，尽皆崩裂。种种不祥，非止一端。帝下诏问群臣以灾异之由，议郎蔡邕上疏，以为蜺堕鸡化，乃妇寺干政之所致，言颇切直。帝览奏叹息，因起更衣。曹节在后窃视，悉宣告左右；遂以他事陷邕于罪，放归田里。后张让、赵忠、封谞、段珪、曹节、侯览、蹇硕、程旷、夏恽、郭胜十人朋比为奸，号为“十常侍”。帝尊信张让，呼为“阿父”。朝政日非，以致天下人心思乱，盗贼蜂起。时巨鹿郡有兄弟三人，一名张角，一名张宝，一名张梁。那张角本是个不第秀才，因入山采药，遇一老人，碧眼童颜，手执藜杖，唤角至一洞中，以天书三卷授之，曰：“此名《太平要术》，汝得之，当代天宣化，普救世人；若萌异心，必获恶报。”角拜问姓名。老人曰：“吾乃南华老仙也。”言讫，化阵清风而去。角得此书，晓夜攻习，能呼风唤雨，号为“太平道人”。 
+		</div>
+    </div>
+	  
+    <div class="card">
+        <div id="example1" class="newspaper">
+		  <h2>第二回 张翼德怒鞭督邮 何国舅谋诛宦竖</h2>
+		  且说董卓字仲颖，陇西临洮人也，官拜河东太守，自来骄傲。当日怠慢了玄德，张飞性发，便欲杀之。玄德与关公急止之曰：“他是朝廷命官，岂可擅杀？”飞曰：“若不杀这厮，反要在他部下听令，其实不甘！二兄要便住在此，我自投别处去也。”玄德曰：“我三人义同生死，岂可相离？不若都投别处去便了。”飞曰：“若如此，稍解吾恨。”于是三人连夜引军来投朱儁。儁待之甚厚，合兵一处，进讨张宝。是时曹操自跟皇甫嵩讨张梁，大战于曲阳。这里朱儁进攻张宝，张宝引贼众八九万屯于山后。儁令玄德为其先锋，与贼对敌。张宝遣副将高升出马搦战；玄德使张飞击之。飞纵马挺矛，与升交战，不数合，刺升落马。玄德麾军直冲过去。张宝就马上披发仗剑，作起妖法。只见风雷大作，一股黑气从天而降，黑气中似有无限人马杀来。玄德连忙回军，军中大乱，败阵而归。与朱儁计议，儁曰：“彼用妖术，我来日可宰猪羊取血，令军士伏于山头，候贼赶来，从高坡上泼之，其法可解。”玄德听令，拨关公、张飞各引军一千，伏于山后高冈之上，盛猪羊血并秽物准备。次日，张宝摇旗擂鼓，引军搦战；玄德出迎。交锋之际，张宝作法，风雷大作，飞砂走石，黑气漫天，滚滚人马，自天而下。玄德拨马便走；张宝驱兵赶来。将过山头，关、张伏军放起号炮，秽物齐泼：但见空中纸人草马纷纷坠地，风雷顿息，砂石不飞。张宝见解了法，急欲退军；左关公，右张飞，两军都出，背后玄德、朱儁一齐赶上：贼兵大败。玄德望见“地公将军”旗号，飞马赶来；张宝落荒而走。玄德发箭，中其左臂。张宝带箭逃脱，走入阳城，坚守不出。 
+		</div>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <img src="demo.jpg" alt="Tulip">
+    </div>
+    <div class="card">
+      <div class="fakeimg">
+		  <p style="font-size:24px;text-align: center;"><a href="http://www.baidu.com">江村即事</a></p>
+		  <p style="font-size:12px;color: red;text-align: center;">（唐）司空曙 </p>
+		  <hr style="width:30%;height: 3px;background-color: red;border:0px;">
+		  <p style="text-align: center;">钓罢归来不系船，</p>
+		  <p style="text-align: center;">江村月落正堪眠，</p>
+		  <p style="text-align: center;">纵然一夜风吹去，</p>
+		  <p style="text-align: center;">只在芦花浅水边。</p>
+	  </div> 
+    </div>
+    <div class="card">
+		<div id="div1" class="demo"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>End!</h2>
+</div>
+
+</body>
+</html>
